@@ -289,7 +289,6 @@ input, textarea, select { font-family: inherit; }
   height: 100%;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
   transition: filter var(--t-md);
 }
 #nav.scrolled .logo-img { filter: brightness(1) invert(0); }
