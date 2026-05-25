@@ -271,12 +271,70 @@ input, textarea, select { font-family: inherit; }
   align-items: center;
   justify-content: space-between;
 }
-.nav-logo { height: 44px; display: flex; align-items: center; flex-shrink: 0; animation: fadeIn 0.8s var(--ease-out) 0.5s forwards; opacity: 0; }
-.nav-logo img { height: 100%; width: auto; object-fit: contain; filter: brightness(0) invert(1); transition: filter var(--t-md), transform var(--t-md); }
-.nav-logo:hover img { transform: scale(1.05); }
+.nav-logo {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  transition: transform var(--t-md);
+}
+.nav-logo:hover { transform: translateY(-1px); }
 
-#nav.scrolled .nav-logo img { filter: none; }
+/* Logo Mark (SVG) */
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  color: var(--white);
+  transition: color var(--t-md);
+  position: relative;
+}
+#nav.scrolled .logo-mark { color: var(--gold); }
 
+.logo-mark-svg { width: 100%; height: 100%; overflow: visible; }
+.logo-mark .k-line {
+  stroke-dasharray: 68;
+  stroke-dashoffset: 68;
+  animation: draw 0.8s var(--ease-out) 1s forwards;
+}
+.logo-mark .k-line-2 { animation-delay: 1.3s; }
+.logo-mark .k-line-3 { animation-delay: 1.6s; }
+
+.logo-node {
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: center;
+  animation: popIn 0.5s var(--ease-out) 2s forwards;
+}
+
+/* Logo Image (PNG) */
+.logo-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: filter var(--t-md), transform var(--t-md);
+}
+#nav.scrolled .logo-img { filter: none; }
+
+/* Fallback Text */
+.logo-text-fallback {
+  display: none;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  transition: color var(--t-md);
+}
+.logo-text-fallback.show { display: block; }
+#nav.scrolled .logo-text-fallback { color: var(--ink); }
+
+@keyframes popIn {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
 @keyframes fadeIn { to { opacity: 1; } }
 
 .nav-links {
