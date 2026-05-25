@@ -271,9 +271,27 @@ input, textarea, select { font-family: inherit; }
   align-items: center;
   justify-content: space-between;
 }
-.nav-logo { height: 44px; display: flex; align-items: center; flex-shrink: 0; }
-.nav-logo img { height: 100%; width: auto; object-fit: contain; filter: brightness(0) invert(1); transition: filter var(--t-md); }
-#nav.scrolled .nav-logo img { filter: none; }
+.nav-logo { height: 44px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; color: var(--white); }
+.logo-svg { height: 100%; width: auto; transition: color var(--t-md), transform var(--t-md); }
+.logo-path { stroke-dasharray: 68; stroke-dashoffset: 68; transition: stroke var(--t-md); }
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: inherit;
+  transition: opacity var(--t-md);
+}
+
+#nav.scrolled .nav-logo { color: var(--ink); }
+#nav.scrolled .nav-logo .logo-svg { color: var(--gold); }
+
+/* Logo Animation on Load */
+.nav-logo .logo-path-1 { animation: draw 0.5s var(--ease-out) 0.8s forwards; }
+.nav-logo .logo-path-2 { animation: draw 0.4s var(--ease-out) 1.2s forwards; }
+.nav-logo .logo-path-3 { animation: draw 0.4s var(--ease-out) 1.5s forwards; }
+
+.nav-logo:hover .logo-svg { transform: scale(1.05); }
 
 .nav-links {
   display: flex;

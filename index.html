@@ -15,22 +15,26 @@
 
   <!-- ══ PRELOADER ══════════════════════════════════════════ -->
   <div id="preloader">
-    <svg class="loader-k" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="k-line k-line-1" d="M12 6 L12 62"/>
-      <path class="k-line k-line-2" d="M12 34 L46 6"/>
-      <path class="k-line k-line-3" d="M12 34 L46 62"/>
-    </svg>
-    <span class="loader-tag">Kontemporary Konsulting</span>
-  </div>
+    <div class="loader-inner">
+      <svg class="loader-k" viewBox="0 0 52 68">
+        <path class="k-line k-line-1" d="M12 6 L12 62" style="stroke: var(--gold);"/>
+        <path class="k-line k-line-2" d="M12 34 L46 6" style="stroke: var(--gold);"/>
+        <path class="k-line k-line-3" d="M12 34 L46 62" style="stroke: var(--gold);"/>
+      </svg>
+      <span class="loader-tag">Kontemporary Konsulting</span>
+    </div>
+    </div>
 
-  <!-- ══ NAVIGATION ═════════════════════════════════════════ -->
-  <header id="nav">
+    <!-- ══ NAVIGATION ═════════════════════════════════════════ -->
+    <header id="nav">
     <div class="wrap nav-inner">
-      <a href="index.html" class="nav-logo">
-        <img src="https://kontemporary.net.ng/images/picture1.png"
-             alt="Kontemporary Konsulting Ltd"
-             onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-        <span style="display:none; font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:#fff; font-weight:500; letter-spacing:-0.01em;">Kontemporary</span>
+      <a href="index.html" class="nav-logo" aria-label="Kontemporary Konsulting Home">
+        <svg width="44" height="44" viewBox="0 0 52 68" class="logo-svg">
+          <path class="logo-path logo-path-1" d="M12 6 L12 62" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path class="logo-path logo-path-2" d="M12 34 L46 6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path class="logo-path logo-path-3" d="M12 34 L46 62" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Kontemporary</span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html"    class="nav-link">Home</a>
