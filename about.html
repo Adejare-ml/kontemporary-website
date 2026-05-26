@@ -10,50 +10,34 @@
 </head>
 <body>
 
-  <!-- ══ PRELOADER ══════════════════════════════════════════ -->
-  <div id="preloader">
-    <div class="loader-inner">
-      <svg class="loader-k" viewBox="0 0 52 68">
-        <path class="k-line k-line-1" d="M12 6 L12 62" style="stroke: var(--gold);"/>
-        <path class="k-line k-line-2" d="M12 34 L46 6" style="stroke: var(--gold);"/>
-        <path class="k-line k-line-3" d="M12 34 L46 62" style="stroke: var(--gold);"/>
-      </svg>
-      <span class="loader-tag">Kontemporary Konsulting</span>
-    </div>
-    </div>
-
-    <!-- ══ NAVIGATION ═════════════════════════════════════════ -->
-    <header id="nav">
+  <!-- ══ NAV ════════════════════════════════════════════════ -->
+  <header id="nav">
     <div class="wrap nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="Kontemporary Konsulting Home">
-        <img src="https://kontemporary.net.ng/images/picture1.png"
-             alt="Kontemporary Konsulting Ltd"
-             class="logo-img"
-             onerror="this.style.display='none'; this.nextElementSibling.classList.add('show')">
-        <span class="logo-text-fallback">Kontemporary</span>
+      <a href="index.html" class="nav-logo">
+        <img src="https://kontemporary.net.ng/images/picture1.png" alt="Kontemporary Konsulting Ltd"
+             onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+        <span style="display:none; font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:#fff; font-weight:500;">Kontemporary</span>
       </a>
       <nav class="nav-links">
-        <a href="index.html"    class="nav-link">Home</a>
-        <a href="about.html"    class="nav-link">About</a>
-        <a href="services.html" class="nav-link">Services</a>
+        <a href="index.html"     class="nav-link">Home</a>
+        <a href="about.html"     class="nav-link">About</a>
+        <a href="services.html"  class="nav-link">Services</a>
         <a href="news-room.html" class="nav-link">News Room</a>
-        <a href="contact.html"  class="nav-link nav-cta">Contact Us</a>
+        <a href="contact.html"   class="nav-link nav-cta">Contact Us</a>
       </nav>
-      <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-burger" id="burger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
-
-  <!-- Mobile menu overlay -->
-  <div id="mobile-menu" role="dialog" aria-label="Mobile navigation">
-    <a href="index.html"    class="mobile-link">Home</a>
+  <div id="mobile-menu">
+    <a href="index.html"     class="mobile-link">Home</a>
     <div class="mobile-divider"></div>
-    <a href="about.html"    class="mobile-link">About</a>
-    <a href="services.html" class="mobile-link">Services</a>
+    <a href="about.html"     class="mobile-link">About</a>
+    <a href="services.html"  class="mobile-link">Services</a>
     <a href="news-room.html" class="mobile-link">News Room</a>
     <div class="mobile-divider"></div>
-    <a href="contact.html"  class="mobile-link">Contact Us</a>
+    <a href="contact.html"   class="mobile-link">Contact Us</a>
   </div>
 
   <!-- ══ PAGE HERO ══════════════════════════════════════════ -->
@@ -212,14 +196,9 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <img src="https://kontemporary.net.ng/images/picture1.png"
-               alt="Kontemporary Konsulting Ltd"
-               class="footer-logo"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span style="display:none; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--text-on-dark); margin-bottom:18px;">Kontemporary</span>
-          <p class="footer-about">
-            A global brand of people, process and technology. Delivering fit-for-purpose ICT consultancy from Abuja, Nigeria, to institutions worldwide.
-          </p>
+          <img src="https://kontemporary.net.ng/images/picture1.png" alt="Kontemporary Konsulting" class="footer-logo"
+               onerror="this.style.display='none'">
+          <p class="footer-about">A global brand of people, process and technology — delivering ICT consultancy from Abuja, Nigeria, to institutions worldwide.</p>
         </div>
         <div>
           <p class="footer-col-title">Navigation</p>
@@ -237,6 +216,15 @@
             <a href="services.html#komputers"    class="footer-link">Komputers</a>
             <a href="services.html#konsulting"   class="footer-link">Konsulting</a>
             <a href="services.html#kreativities" class="footer-link">Kreativities</a>
+          </nav>
+        </div>
+        <div>
+          <p class="footer-col-title">Quick Links</p>
+          <nav class="footer-links">
+            <a href="https://kontemporary.net.ng/index.php/apply-for-jobs"       target="_blank" rel="noopener" class="footer-link">Apply for Jobs</a>
+            <a href="https://kontemporary.net.ng/index.php/apply-for-internship" target="_blank" rel="noopener" class="footer-link">Apply for Internship</a>
+            <a href="https://kontemporary.net.ng/index.php/privacy-policy"       target="_blank" rel="noopener" class="footer-link">Privacy Policy</a>
+            <a href="https://kontemporary.net.ng/index.php/contact-us"           target="_blank" rel="noopener" class="footer-link">Feedback</a>
           </nav>
         </div>
         <div>
