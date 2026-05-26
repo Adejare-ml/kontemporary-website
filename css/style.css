@@ -1155,7 +1155,6 @@ textarea.form-field { resize: vertical; min-height: 136px; }
 .footer-logo {
   height: 40px;
   margin-bottom: 18px;
-  filter: brightness(0) invert(1);
 }
 .footer-about {
   font-size: 0.84rem;
