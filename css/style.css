@@ -4,8 +4,6 @@
    Aesthetic: Editorial Minimalism × African Prestige
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Bebas+Neue&display=swap');
-
 /* ── 1. RESET ──────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -1319,49 +1317,7 @@ textarea.form-field { resize: vertical; min-height: 136px; }
   transform: scale(1.05);
 }
 
-/* ── 27. BANNER STRIP ───────────────────────────────────── */
-.banner-strip {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 260px;
-  overflow: hidden;
-}
-.banner-item {
-  position: relative;
-  overflow: hidden;
-}
-.banner-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.9s var(--ease-out);
-}
-.banner-item:hover img { transform: scale(1.05); }
-.banner-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(7,45,77,0.42);
-  transition: background var(--t-md);
-}
-.banner-item:hover .banner-overlay { background: rgba(7,45,77,0.2); }
-.banner-caption {
-  position: absolute;
-  bottom: 18px;
-  left: 22px;
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(240,242,245,0.75);
-  pointer-events: none;
-}
-@media (max-width: 768px) {
-  .banner-strip { grid-template-columns: 1fr; height: 180px; }
-}
-
-/* ── 28. VIDEO SECTION ──────────────────────────────────── */
+/* ── 27. VIDEO SECTION ──────────────────────────────────── */
 .video-section {
   padding: var(--section-y) 0;
   background: var(--ink);
@@ -1386,3 +1342,110 @@ textarea.form-field { resize: vertical; min-height: 136px; }
   height: 100%;
   border: none;
 }
+
+/* ── 29. SKIP NAVIGATION (Accessibility) ──────────────────── */
+.skip-nav {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -1;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+}
+.skip-nav:focus {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  z-index: 10000;
+  padding: 12px 20px;
+  background: var(--gold);
+  color: var(--white);
+  border-radius: 4px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 16px rgba(0,128,254,0.35);
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+/* ── 30. SCROLL-TO-TOP BUTTON ──────────────────────────────── */
+.scroll-top {
+  position: fixed;
+  bottom: 32px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,128,254,0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--t-md), visibility var(--t-md), transform var(--t-md), background var(--t-sm);
+  z-index: 800;
+  cursor: pointer;
+}
+.scroll-top svg {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.scroll-top:hover {
+  background: var(--gold-deep);
+  transform: translateY(-2px);
+}
+.scroll-top:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ── 31. FEATURED CARD (News Room) ─────────────────────────── */
+.featured-card-grid {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 0;
+}
+@media (max-width: 768px) {
+  .featured-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 32. FOOTER RESPONSIVE (5-col → 3-col → 2-col → 1-col) ── */
+@media (max-width: 1200px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+}
+
+/* ── 33. FORM AUTOCOMPLETE & FOCUS IMPROVEMENTS ────────────── */
+.form-field:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 0;
+  border-color: var(--gold);
+}
+.form-field:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--white) inset;
+  -webkit-text-fill-color: var(--text-primary);
+}
+
