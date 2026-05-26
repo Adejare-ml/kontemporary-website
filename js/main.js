@@ -65,27 +65,43 @@
     const menu   = document.getElementById('mobile-menu');
     if (!burger || !menu) return;
 
+    function closeMenu() {
+      burger.classList.remove('open');
+      menu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    function openMenu() {
+      burger.classList.add('open');
+      menu.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
     burger.addEventListener('click', () => {
-      const open = burger.classList.toggle('open');
-      menu.classList.toggle('open', open);
-      document.body.style.overflow = open ? 'hidden' : '';
+      burger.classList.contains('open') ? closeMenu() : openMenu();
     });
 
     // Close on link click
     menu.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        burger.classList.remove('open');
-        menu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeMenu);
     });
 
-    // Close on ESC
+    // Close on outside click (tap anywhere outside)
+    document.addEventListener('click', e => {
+      if (menu.classList.contains('open') &&
+          !menu.contains(e.target) &&
+          !burger.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Close on ESC + return focus to burger
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && menu.classList.contains('open')) {
-        burger.classList.remove('open');
-        menu.classList.remove('open');
-        document.body.style.overflow = '';
+        closeMenu();
+        burger.focus();
       }
     });
   }
@@ -220,6 +236,20 @@
     });
   }
 
+  /* ── SCROLL TO TOP ──────────────────────────────────────── */
+  function initScrollToTop() {
+    const btn = document.getElementById('scrollTop');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   /* ── INIT ALL ───────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     initPreloader();
@@ -232,6 +262,7 @@
     initContactForm();
     initTicker();
     initSmoothAnchors();
+    initScrollToTop();
   });
 
 })();
