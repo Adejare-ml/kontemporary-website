@@ -15,32 +15,29 @@
 
   <!-- ══ PRELOADER ══════════════════════════════════════════ -->
   <div id="preloader">
-    <div class="loader-inner">
-      <svg class="loader-k" viewBox="0 0 52 68">
-        <path class="k-line k-line-1" d="M12 6 L12 62" style="stroke: var(--gold);"/>
-        <path class="k-line k-line-2" d="M12 34 L46 6" style="stroke: var(--gold);"/>
-        <path class="k-line k-line-3" d="M12 34 L46 62" style="stroke: var(--gold);"/>
-      </svg>
-      <span class="loader-tag">Kontemporary Konsulting</span>
-    </div>
-    </div>
+    <svg class="loader-k" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="k-line k-line-1" d="M12 6 L12 62"/>
+      <path class="k-line k-line-2" d="M12 34 L46 6"/>
+      <path class="k-line k-line-3" d="M12 34 L46 62"/>
+    </svg>
+    <span class="loader-tag">Kontemporary Konsulting</span>
+  </div>
 
-    <!-- ══ NAVIGATION ═════════════════════════════════════════ -->
-    <header id="nav">
+  <!-- ══ NAVIGATION ═════════════════════════════════════════ -->
+  <header id="nav">
     <div class="wrap nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="Kontemporary Konsulting Home">
+      <a href="index.html" class="nav-logo">
         <img src="https://kontemporary.net.ng/images/picture1.png"
              alt="Kontemporary Konsulting Ltd"
-             class="logo-img"
-             onerror="this.style.display='none'; this.nextElementSibling.classList.add('show')">
-        <span class="logo-text-fallback">Kontemporary</span>
+             onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+        <span style="display:none; font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:#fff; font-weight:500; letter-spacing:-0.01em;">Kontemporary</span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html"    class="nav-link">Home</a>
-        <a href="about.html"    class="nav-link">About</a>
-        <a href="services.html" class="nav-link">Services</a>
+        <a href="index.html"     class="nav-link">Home</a>
+        <a href="about.html"     class="nav-link">About</a>
+        <a href="services.html"  class="nav-link">Services</a>
         <a href="news-room.html" class="nav-link">News Room</a>
-        <a href="contact.html"  class="nav-link nav-cta">Contact Us</a>
+        <a href="contact.html"   class="nav-link nav-cta">Contact Us</a>
       </nav>
       <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -48,22 +45,19 @@
     </div>
   </header>
 
-  <!-- Mobile menu overlay -->
   <div id="mobile-menu" role="dialog" aria-label="Mobile navigation">
-    <a href="index.html"    class="mobile-link">Home</a>
+    <a href="index.html"     class="mobile-link">Home</a>
     <div class="mobile-divider"></div>
-    <a href="about.html"    class="mobile-link">About</a>
-    <a href="services.html" class="mobile-link">Services</a>
+    <a href="about.html"     class="mobile-link">About</a>
+    <a href="services.html"  class="mobile-link">Services</a>
     <a href="news-room.html" class="mobile-link">News Room</a>
     <div class="mobile-divider"></div>
-    <a href="contact.html"  class="mobile-link">Contact Us</a>
+    <a href="contact.html"   class="mobile-link">Contact Us</a>
   </div>
 
   <!-- ══ HERO ═══════════════════════════════════════════════ -->
   <section class="hero" aria-label="Hero">
     <div class="wrap hero-body">
-
-      <!-- Left: Text content -->
       <div class="hero-text">
         <span class="eyebrow reveal">ICT Consulting &nbsp;·&nbsp; Abuja, Nigeria &nbsp;·&nbsp; Est. 1990s</span>
         <h1 class="hero-headline reveal reveal-d1">
@@ -84,55 +78,43 @@
         </div>
       </div>
 
-      <!-- Right: Network art SVG -->
       <div class="hero-art reveal reveal-d2">
         <svg viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- Orbital ellipses -->
           <ellipse cx="230" cy="230" rx="195" ry="62" fill="none" stroke="#0080FE" stroke-width="0.8" opacity="0.18" transform="rotate(-32 230 230)"/>
           <ellipse cx="230" cy="230" rx="195" ry="62" fill="none" stroke="#0080FE" stroke-width="0.8" opacity="0.18" transform="rotate(32 230 230)"/>
           <ellipse cx="230" cy="230" rx="195" ry="62" fill="none" stroke="#0080FE" stroke-width="0.6" opacity="0.12" transform="rotate(80 230 230)"/>
-          <!-- Main boundary circle -->
           <circle cx="230" cy="230" r="188" fill="none" stroke="#0080FE" stroke-width="0.7" opacity="0.18"/>
-          <!-- Hexagonal node positions: top, TR, BR, Bot, BL, TL -->
-          <!-- top:230,42  TR:393,136  BR:375,362  bot:230,418  BL:85,362  TL:67,136 -->
-          <!-- Outer polygon edges -->
           <line x1="230" y1="42"  x2="393" y2="136" stroke="#0080FE" stroke-width="0.9" opacity="0.28"/>
           <line x1="393" y1="136" x2="375" y2="362" stroke="#0080FE" stroke-width="0.9" opacity="0.28"/>
           <line x1="375" y1="362" x2="230" y2="418" stroke="#0080FE" stroke-width="0.9" opacity="0.28"/>
           <line x1="230" y1="418" x2="85"  y2="362" stroke="#0080FE" stroke-width="0.9" opacity="0.28"/>
           <line x1="85"  y1="362" x2="67"  y2="136" stroke="#0080FE" stroke-width="0.9" opacity="0.28"/>
           <line x1="67"  y1="136" x2="230" y2="42"  stroke="#0080FE" stroke-width="0.9" opacity="0.28"/>
-          <!-- Cross connections -->
           <line x1="230" y1="42"  x2="375" y2="362" stroke="#0080FE" stroke-width="0.5" opacity="0.13"/>
           <line x1="393" y1="136" x2="85"  y2="362" stroke="#0080FE" stroke-width="0.5" opacity="0.13"/>
           <line x1="393" y1="136" x2="230" y2="418" stroke="#0080FE" stroke-width="0.5" opacity="0.13"/>
           <line x1="67"  y1="136" x2="375" y2="362" stroke="#0080FE" stroke-width="0.5" opacity="0.13"/>
           <line x1="230" y1="42"  x2="85"  y2="362" stroke="#0080FE" stroke-width="0.5" opacity="0.13"/>
           <line x1="67"  y1="136" x2="230" y2="418" stroke="#0080FE" stroke-width="0.5" opacity="0.13"/>
-          <!-- Spokes to centre -->
           <line x1="230" y1="42"  x2="230" y2="230" stroke="#0080FE" stroke-width="0.4" opacity="0.1"/>
           <line x1="393" y1="136" x2="230" y2="230" stroke="#0080FE" stroke-width="0.4" opacity="0.1"/>
           <line x1="375" y1="362" x2="230" y2="230" stroke="#0080FE" stroke-width="0.4" opacity="0.1"/>
           <line x1="230" y1="418" x2="230" y2="230" stroke="#0080FE" stroke-width="0.4" opacity="0.1"/>
           <line x1="85"  y1="362" x2="230" y2="230" stroke="#0080FE" stroke-width="0.4" opacity="0.1"/>
           <line x1="67"  y1="136" x2="230" y2="230" stroke="#0080FE" stroke-width="0.4" opacity="0.1"/>
-          <!-- Mid-ring nodes -->
           <circle cx="311" cy="148" r="3"   fill="#0080FE" opacity="0.45"/>
           <circle cx="338" cy="296" r="3"   fill="#0080FE" opacity="0.45"/>
           <circle cx="130" cy="296" r="3"   fill="#0080FE" opacity="0.45"/>
           <circle cx="152" cy="148" r="3"   fill="#0080FE" opacity="0.45"/>
-          <!-- Outer node circles -->
           <circle cx="230" cy="42"  r="5.5" fill="#0080FE" opacity="0.7"/>
           <circle cx="393" cy="136" r="4.5" fill="#0080FE" opacity="0.62"/>
           <circle cx="375" cy="362" r="6"   fill="#0080FE" opacity="0.78"/>
           <circle cx="230" cy="418" r="4.5" fill="#0080FE" opacity="0.62"/>
           <circle cx="85"  cy="362" r="5"   fill="#0080FE" opacity="0.68"/>
           <circle cx="67"  cy="136" r="4.5" fill="#0080FE" opacity="0.62"/>
-          <!-- Centre hub rings -->
           <circle cx="230" cy="230" r="20"  fill="none" stroke="#0080FE" stroke-width="1.5" opacity="0.65"/>
           <circle cx="230" cy="230" r="10"  fill="none" stroke="#0080FE" stroke-width="1"   opacity="0.45"/>
           <circle cx="230" cy="230" r="3.5" fill="#0080FE" opacity="0.9"/>
-          <!-- Animated pulse -->
           <circle cx="230" cy="230" fill="none" stroke="#0080FE" stroke-width="1" opacity="0">
             <animate attributeName="r"       from="20" to="52"   dur="2.8s" repeatCount="indefinite"/>
             <animate attributeName="opacity" from="0.45" to="0"  dur="2.8s" repeatCount="indefinite"/>
@@ -145,7 +127,6 @@
       </div>
     </div>
 
-    <!-- News ticker -->
     <div class="hero-ticker" aria-hidden="true">
       <span class="ticker-label">Latest</span>
       <div class="ticker-track">
@@ -160,6 +141,26 @@
       </div>
     </div>
   </section>
+
+  <!-- ══ BANNER STRIP ════════════════════════════════════════ -->
+  <div class="banner-strip" aria-hidden="true">
+    <div class="banner-item">
+      <img src="https://kontemporary.net.ng/images/kontemp/slide_2.jpg"
+           alt="Kontemporary team at work"
+           loading="lazy"
+           onerror="this.parentElement.style.background='var(--ink-soft)'">
+      <div class="banner-overlay"></div>
+      <span class="banner-caption">Our Team</span>
+    </div>
+    <div class="banner-item">
+      <img src="https://kontemporary.net.ng/images/kontemp/outk2.jpg"
+           alt="Kontemporary at a global event"
+           loading="lazy"
+           onerror="this.parentElement.style.background='var(--ink-soft)'">
+      <div class="banner-overlay"></div>
+      <span class="banner-caption">Global Presence</span>
+    </div>
+  </div>
 
   <!-- ══ STATS BAR ═══════════════════════════════════════════ -->
   <section class="stats-bar" aria-label="Key figures">
@@ -178,8 +179,8 @@
           <span class="stat-label">Key Partnerships</span>
         </div>
         <div class="stat-item reveal reveal-d3">
-          <span class="stat-num"><span class="accent">🌍</span></span>
-          <span class="stat-label">Global Operations</span>
+          <span class="stat-num" style="font-size:2rem; font-family:var(--font-stat);">GLOBAL</span>
+          <span class="stat-label">Operations Reach</span>
         </div>
       </div>
     </div>
@@ -191,25 +192,20 @@
       <div class="section-head reveal">
         <span class="eyebrow">What We Do</span>
         <h2 class="display-lg" id="services-title">Three pillars.<br>One firm.</h2>
-        <p class="body-lg" style="margin-top:16px;">
-          Kontemporary Konsulting delivers end-to-end ICT solutions across three tightly integrated practice areas — each beginning with the letter that defines our brand.
+        <p class="body-lg" style="margin-top:16px; color:var(--text-secondary);">
+          Kontemporary delivers end-to-end ICT solutions across three tightly integrated practice areas — each beginning with the letter that defines our brand.
         </p>
       </div>
 
       <div class="service-grid">
-
         <div class="service-card reveal">
           <span class="service-card-num" aria-hidden="true">01</span>
           <svg class="service-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"/>
           </svg>
           <h3 class="service-card-title">Komputers</h3>
-          <p class="service-card-desc">
-            Hardware supply, software integration and systems deployment for seamless data and voice communication. We design, procure and maintain ICT infrastructure that organisations can rely on.
-          </p>
-          <a href="services.html#komputers" class="service-card-link">
-            Learn more &nbsp;→
-          </a>
+          <p class="service-card-desc">Hardware supply, software integration and systems deployment for seamless data and voice communication. We design, procure and maintain ICT infrastructure that organisations can rely on.</p>
+          <a href="services.html#komputers" class="service-card-link">Learn more &nbsp;→</a>
         </div>
 
         <div class="service-card reveal reveal-d1">
@@ -218,12 +214,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/>
           </svg>
           <h3 class="service-card-title">Konsulting</h3>
-          <p class="service-card-desc">
-            Strategic ICT advisory for government agencies, enterprise clients and development organisations. We translate complex technology decisions into clear, actionable policy and operational frameworks.
-          </p>
-          <a href="services.html#konsulting" class="service-card-link">
-            Learn more &nbsp;→
-          </a>
+          <p class="service-card-desc">Strategic ICT advisory for government agencies, enterprise clients and development organisations. We translate complex technology decisions into clear, actionable policy and operational frameworks.</p>
+          <a href="services.html#konsulting" class="service-card-link">Learn more &nbsp;→</a>
         </div>
 
         <div class="service-card reveal reveal-d2">
@@ -232,14 +224,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/>
           </svg>
           <h3 class="service-card-title">Kreativities</h3>
-          <p class="service-card-desc">
-            Online application design, digital content production and cybersecurity services. We build the digital presence and protect the digital assets of the organisations we serve.
-          </p>
-          <a href="services.html#kreativities" class="service-card-link">
-            Learn more &nbsp;→
-          </a>
+          <p class="service-card-desc">Online application design, digital content production and cybersecurity services. We build the digital presence and protect the digital assets of the organisations we serve.</p>
+          <a href="services.html#kreativities" class="service-card-link">Learn more &nbsp;→</a>
         </div>
-
       </div>
     </div>
   </section>
@@ -250,13 +237,9 @@
       <div class="section-head reveal">
         <span class="eyebrow">Our Clients</span>
         <h2 class="display-lg" id="clients-title">Who we serve</h2>
-        <p style="margin-top:16px; color:var(--text-secondary); line-height:1.7;">
-          From Abuja to the United Nations, we bring the same rigour and commitment to every engagement.
-        </p>
+        <p style="margin-top:16px; color:var(--text-secondary); line-height:1.7;">From Abuja to the United Nations, we bring the same rigour and commitment to every engagement.</p>
       </div>
-
       <div class="client-grid">
-
         <div class="client-card reveal">
           <svg class="client-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/>
@@ -264,7 +247,6 @@
           <h3 class="client-title">Government</h3>
           <p class="client-desc">Federal ministries, departments and agencies across Nigeria. We support ICT policy, infrastructure deployment and e-government initiatives at the highest levels.</p>
         </div>
-
         <div class="client-card reveal reveal-d1">
           <svg class="client-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
@@ -272,7 +254,6 @@
           <h3 class="client-title">Development Organisations</h3>
           <p class="client-desc">World Bank, European Union and UN-affiliated bodies. Kontemporary brings deep experience in the governance and reporting frameworks that international development projects require.</p>
         </div>
-
         <div class="client-card reveal reveal-d2">
           <svg class="client-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>
@@ -280,7 +261,6 @@
           <h3 class="client-title">Private Sector</h3>
           <p class="client-desc">Banks, telecoms, multinationals and SMEs across Nigeria and West Africa. We deliver systems integration and strategic advisory that drive real operational improvement.</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -290,9 +270,8 @@
     <div class="wrap">
       <div class="section-head light reveal">
         <span class="eyebrow">Leadership</span>
-        <h2 class="display-lg" id="leadership-title" style="color:var(--text-on-dark);">The person at the helm</h2>
+        <h2 class="display-lg" id="leadership-title" style="color:var(--text-on-dark); margin-top:16px;">The person at the helm</h2>
       </div>
-
       <div class="leadership-grid">
         <div class="leadership-photo-wrap reveal">
           <div class="leadership-photo">
@@ -303,16 +282,11 @@
           </div>
           <div class="leadership-frame" aria-hidden="true"></div>
         </div>
-
         <div class="leadership-content reveal reveal-d1">
           <p class="leadership-role">Principal &amp; Founder</p>
           <h3 class="leadership-name">Dr. Jimson<br>Olufuye</h3>
-          <p class="leadership-bio">
-            Dr. Jimson Olufuye is the founding principal of Kontemporary Konsulting Ltd and one of Nigeria's most recognised voices in ICT governance and digital policy. With over 30 years in the sector, he has advised government institutions and international development bodies on technology strategy, cybersecurity and digital inclusion.
-          </p>
-          <p class="leadership-bio">
-            He serves on several global advisory bodies and has represented Nigeria and Africa at the highest levels of international internet governance discourse — including the United Nations General Assembly.
-          </p>
+          <p class="leadership-bio">Dr. Jimson Olufuye is the founding principal of Kontemporary Konsulting Ltd and one of Nigeria's most recognised voices in ICT governance and digital policy. With over 30 years in the sector, he has advised government institutions and international development bodies on technology strategy, cybersecurity and digital inclusion.</p>
+          <p class="leadership-bio">He serves on several global advisory bodies and has represented Nigeria and Africa at the highest levels of international internet governance discourse — including the United Nations General Assembly.</p>
           <div class="leadership-credential">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:18px;height:18px;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
             Delivered the Maiden UNGA Plenary Speech at WSIS+20 — representing Africa's multi-stakeholder community at the United Nations General Assembly, New York.
@@ -334,7 +308,6 @@
       </div>
 
       <div class="news-grid">
-
         <div class="news-card reveal">
           <span class="news-card-cat">UN / Global</span>
           <div class="news-card-body">
@@ -342,7 +315,8 @@
             <p class="news-card-excerpt">A landmark moment: Kontemporary's principal addressed the United Nations General Assembly on behalf of Africa's multi-stakeholder internet governance community.</p>
             <div class="news-card-footer">
               <span class="news-card-date">2025</span>
-              <a href="news-room.html" class="news-card-read">Read →</a>
+              <a href="https://kontemporary.net.ng/index.php/news-room/a-landmark-moment-at-the-united-nations-olufuye-delivers-maiden-unga-plenary-speech-at-wsis-20"
+                 target="_blank" rel="noopener" class="news-card-read">Read →</a>
             </div>
           </div>
         </div>
@@ -354,7 +328,8 @@
             <p class="news-card-excerpt">Continued recognition at the highest levels of global internet governance — Dr. Olufuye joins Engr. Hossam Elgamal and others on the UN MSG for 2025.</p>
             <div class="news-card-footer">
               <span class="news-card-date">2025</span>
-              <a href="news-room.html" class="news-card-read">Read →</a>
+              <a href="https://kontemporary.net.ng/index.php/news-room/dr-jimson-olufuye-engr-hossam-elgamal-and-others-appointed-to-the-un-multi-stakeholder-advisory-group-2025"
+                 target="_blank" rel="noopener" class="news-card-read">Read →</a>
             </div>
           </div>
         </div>
@@ -366,11 +341,37 @@
             <p class="news-card-excerpt">Kontemporary played a key role in the IGF 2025 High-Level Session on the future of the Internet Governance Forum following its permanence at the WSIS+20 High Level.</p>
             <div class="news-card-footer">
               <span class="news-card-date">2025</span>
-              <a href="news-room.html" class="news-card-read">Read →</a>
+              <a href="https://kontemporary.net.ng/index.php/news-room/igf-high-level-session-5-charting-the-path-forward-for-the-wsis-20-review-and-role-of-the-igf"
+                 target="_blank" rel="noopener" class="news-card-read">Read →</a>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ══ VIDEO ═══════════════════════════════════════════════ -->
+  <section class="video-section section--dark" aria-labelledby="video-title">
+    <div class="wrap">
+      <div class="section-head center light reveal" style="margin-bottom:48px;">
+        <span class="eyebrow">Watch</span>
+        <h2 class="display-lg" id="video-title" style="color:var(--text-on-dark); margin-top:16px;">
+          Hear it from us directly.
+        </h2>
+        <p style="color:var(--text-on-dark-2); margin-top:12px; line-height:1.7;">
+          A brief introduction to who Kontemporary Konsulting is and what we stand for.
+        </p>
+      </div>
+      <div class="video-outer reveal">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/M_sVLadxayw?si=k-LruhPKRtq6I7MJ"
+            title="Kontemporary Konsulting — Introduction"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -379,62 +380,20 @@
   <section class="section" aria-labelledby="partners-title">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow">Partners &amp; Clients</span>
+        <span class="eyebrow">Membership / Partners / Abridged Clientele</span>
         <h2 class="display-md" id="partners-title" style="margin-top:16px;">Trusted by institutions<br>that shape Africa</h2>
       </div>
-
       <div class="partners-grid reveal">
-        <!-- Partner logos — using live URLs with text fallback -->
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l1.png" alt="Partner 1"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l2.png" alt="Partner 2"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l3.png" alt="Partner 3"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l4.png" alt="Partner 4"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l5.png" alt="Partner 5"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l6.png" alt="Partner 6"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l7.png" alt="Partner 7"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l8.png" alt="Partner 8"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l9.png" alt="Partner 9"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
-        <div class="partner-item">
-          <img src="https://kontemporary.net.ng/images/l10.png" alt="Partner 10"
-               onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span class="partner-name" style="display:none;">Partner</span>
-        </div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l1.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l2.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l3.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l4.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l5.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l6.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l7.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l8.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l9.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l10.png" alt="Partner" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
       </div>
     </div>
   </section>
@@ -461,65 +420,45 @@
   <footer class="footer" aria-label="Site footer">
     <div class="wrap">
       <div class="footer-grid">
-
         <div>
-          <img src="https://kontemporary.net.ng/images/picture1.png"
-               alt="Kontemporary Konsulting Ltd"
-               class="footer-logo"
+          <img src="https://kontemporary.net.ng/images/picture1.png" alt="Kontemporary Konsulting Ltd" class="footer-logo"
                onerror="this.style.display='none'; this.nextSibling.style.display='block'">
-          <span style="display:none; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--text-on-dark); margin-bottom:18px;">Kontemporary</span>
-          <p class="footer-about">
-            A global brand of people, process and technology. Delivering fit-for-purpose ICT consultancy from Abuja, Nigeria, to institutions worldwide.
-          </p>
+          <span style="display:none; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--text-on-dark); display:block; margin-bottom:18px;">Kontemporary</span>
+          <p class="footer-about">A global brand of people, process and technology. Delivering fit-for-purpose ICT consultancy from Abuja, Nigeria, to institutions worldwide.</p>
         </div>
-
         <div>
           <p class="footer-col-title">Navigation</p>
           <nav class="footer-links" aria-label="Footer navigation">
-            <a href="index.html"    class="footer-link">Home</a>
-            <a href="about.html"    class="footer-link">About Us</a>
-            <a href="services.html" class="footer-link">Services</a>
+            <a href="index.html"     class="footer-link">Home</a>
+            <a href="about.html"     class="footer-link">About Us</a>
+            <a href="services.html"  class="footer-link">Services</a>
             <a href="news-room.html" class="footer-link">News Room</a>
-            <a href="contact.html"  class="footer-link">Contact Us</a>
+            <a href="contact.html"   class="footer-link">Contact Us</a>
           </nav>
         </div>
-
+        <div>
+          <p class="footer-col-title">Services</p>
+          <nav class="footer-links">
+            <a href="services.html#komputers"    class="footer-link">Komputers</a>
+            <a href="services.html#konsulting"   class="footer-link">Konsulting</a>
+            <a href="services.html#kreativities" class="footer-link">Kreativities</a>
+          </nav>
+        </div>
         <div>
           <p class="footer-col-title">Quick Links</p>
-          <nav class="footer-links" aria-label="Quick links">
-            <a href="services.html#komputers"   class="footer-link">Komputers</a>
-            <a href="services.html#konsulting"  class="footer-link">Konsulting</a>
-            <a href="services.html#kreativities" class="footer-link">Kreativities</a>
-            <a href="contact.html"  class="footer-link">Apply for Internship</a>
-            <a href="contact.html"  class="footer-link">Feedback</a>
+          <nav class="footer-links">
+            <a href="https://kontemporary.net.ng/index.php/apply-for-jobs"        target="_blank" rel="noopener" class="footer-link">Apply for Jobs</a>
+            <a href="https://kontemporary.net.ng/index.php/apply-for-internship"  target="_blank" rel="noopener" class="footer-link">Apply for Internship</a>
+            <a href="https://kontemporary.net.ng/index.php/privacy-policy"        target="_blank" rel="noopener" class="footer-link">Privacy Policy</a>
+            <a href="https://kontemporary.net.ng/index.php/contact-us"            target="_blank" rel="noopener" class="footer-link">Feedback</a>
           </nav>
         </div>
-
-        <div>
-          <p class="footer-col-title">Contact</p>
-          <address style="font-style:normal;">
-            <div class="footer-contact-item">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:16px;height:16px;flex-shrink:0;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-              Abuja, Federal Capital Territory, Nigeria
-            </div>
-            <div class="footer-contact-item">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:16px;height:16px;flex-shrink:0;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-              <a href="mailto:info@kontemporary.net.ng" class="footer-link">info@kontemporary.net.ng</a>
-            </div>
-            <div class="footer-contact-item">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:16px;height:16px;flex-shrink:0;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
-              <a href="https://kontemporary.net.ng" class="footer-link">kontemporary.net.ng</a>
-            </div>
-          </address>
-        </div>
-
       </div>
-
       <div class="footer-bottom">
         <span>© 2026 Kontemporary Konsulting Ltd. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#" class="footer-bottom-link">Privacy Policy</a>
-          <a href="#" class="footer-bottom-link">Terms of Use</a>
+          <a href="https://kontemporary.net.ng/index.php/privacy-policy" target="_blank" rel="noopener" class="footer-bottom-link">Privacy Policy</a>
+          <a href="https://kontemporary.net.ng/index.php/contact-us"     target="_blank" rel="noopener" class="footer-bottom-link">Feedback</a>
         </div>
       </div>
     </div>
