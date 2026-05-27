@@ -202,50 +202,65 @@ input, textarea, select { font-family: inherit; }
 #preloader {
   position: fixed;
   inset: 0;
-  background: var(--white);
+  background: var(--ink);
   z-index: 10000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.55s var(--ease-out), visibility 0.55s;
+  transition: opacity 0.65s var(--ease-out), visibility 0.65s;
 }
 #preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
 
+/* Subtle dot-grid texture on preloader */
+#preloader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 38px 38px;
+  pointer-events: none;
+}
+
 .loader-k {
-  width: 52px;
-  height: 68px;
+  width: 64px;
+  height: 82px;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 18px rgba(0,128,254,0.55));
 }
 .k-line {
   fill: none;
-  stroke: var(--ink);
+  stroke: var(--gold);
   stroke-width: 3.2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 .k-line-1 {
-  stroke-dasharray: 68;
-  stroke-dashoffset: 68;
-  animation: draw 0.42s var(--ease-out) 0.1s forwards;
+  stroke-dasharray: 76;
+  stroke-dashoffset: 76;
+  animation: draw 0.45s var(--ease-out) 0.15s forwards;
 }
 .k-line-2 {
-  stroke-dasharray: 58;
-  stroke-dashoffset: 58;
-  animation: draw 0.38s var(--ease-out) 0.42s forwards;
+  stroke-dasharray: 62;
+  stroke-dashoffset: 62;
+  animation: draw 0.4s var(--ease-out) 0.48s forwards;
 }
 .k-line-3 {
-  stroke-dasharray: 58;
-  stroke-dashoffset: 58;
-  animation: draw 0.38s var(--ease-out) 0.68s forwards;
+  stroke-dasharray: 62;
+  stroke-dashoffset: 62;
+  animation: draw 0.4s var(--ease-out) 0.76s forwards;
 }
 .loader-tag {
-  margin-top: 22px;
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
+  margin-top: 28px;
+  font-size: 0.65rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: rgba(240,242,245,0.45);
   opacity: 0;
-  animation: fadeUp 0.35s var(--ease-out) 0.3s forwards;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.4s var(--ease-out) 0.55s forwards;
 }
 
 /* ── 7. NAVIGATION ─────────────────────────────────────── */
