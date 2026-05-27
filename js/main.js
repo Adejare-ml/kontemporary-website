@@ -189,28 +189,51 @@
 
   /* ── CONTACT FORM ───────────────────────────────────────── */
   function initContactForm() {
-    const form = document.getElementById('contact-form');
+    const form   = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
     if (!form) return;
+
+    function setStatus(type, msg) {
+      if (!status) return;
+      status.className = 'form-status-msg ' + type;
+      status.textContent = msg;
+    }
+
+    function clearStatus() {
+      if (!status) return;
+      status.className = 'form-status-msg';
+      status.textContent = '';
+    }
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const btn = form.querySelector('[type="submit"]');
-      const original = btn.textContent;
+      clearStatus();
 
-      btn.textContent = 'Sending…';
+      const btn = form.querySelector('[type="submit"]') || form.querySelector('.submit-btn');
+      const original = btn.innerHTML;
+      const originalStyle = { bg: btn.style.background, border: btn.style.borderColor };
+
+      btn.innerHTML = 'Sending…';
       btn.disabled = true;
+      btn.setAttribute('aria-busy', 'true');
 
-      // Simulate send (replace with real endpoint)
+      // Replace with real endpoint when ready
       setTimeout(() => {
-        btn.textContent = 'Message Sent ✓';
-        btn.style.background = '#2E7D32';
+        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px;flex-shrink:0;"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg> Message Sent`;
+        btn.style.background = '#166534';
+        btn.style.borderColor = '#166534';
+
+        setStatus('success', '✓ Your message has been received. We\'ll respond within 2 business days.');
         form.reset();
 
         setTimeout(() => {
-          btn.textContent = original;
+          btn.innerHTML = original;
           btn.style.background = '';
+          btn.style.borderColor = '';
           btn.disabled = false;
-        }, 4000);
+          btn.removeAttribute('aria-busy');
+          clearStatus();
+        }, 5000);
       }, 1600);
     });
   }
