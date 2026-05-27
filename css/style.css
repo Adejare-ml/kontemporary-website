@@ -274,24 +274,23 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  animation: logoSlideIn 0.7s var(--ease-out) 1.5s both;
+  animation: logoSlideIn 0.7s var(--ease-out) 1.4s both;
 }
 .nav-logo img {
   height: 100%;
   width: auto;
   object-fit: contain;
-  /* White on dark hero background */
-  filter: brightness(0) invert(1);
-  transition: filter 0.45s var(--ease-out), transform 0.3s var(--ease);
+  transition: filter var(--t-md), transform var(--t-sm);
   transform-origin: left center;
 }
-/* On scroll: white bg — force logo to deep navy, not white */
-#nav.scrolled .nav-logo img {
-  filter: brightness(0) saturate(100%) invert(14%) sepia(76%)
-          saturate(1500%) hue-rotate(185deg) brightness(85%);
+#nav:not(.scrolled) .nav-logo img {
+  filter: drop-shadow(0 1px 8px rgba(0,0,0,0.45));
 }
-.nav-logo:hover img { transform: scale(1.04); }
-.nav-logo span { transition: color 0.45s var(--ease-out); }
+#nav.scrolled .nav-logo img {
+  filter: none;
+}
+.nav-logo:hover img { transform: scale(1.05); }
+.nav-logo span { transition: color var(--t-md); }
 
 .nav-links {
   display: flex;
@@ -1118,6 +1117,7 @@ input, textarea, select { font-family: inherit; }
 .form-field:focus {
   border-color: var(--gold);
   box-shadow: 0 0 0 3px rgba(0,128,254,0.1);
+  outline: none;
 }
 .form-field::placeholder { color: var(--text-muted); }
 textarea.form-field { resize: vertical; min-height: 136px; }
@@ -1144,12 +1144,8 @@ textarea.form-field { resize: vertical; min-height: 136px; }
   border-top: 1px solid var(--ink-border);
   padding: 80px 0 36px;
 }
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1fr 1.4fr;
-  gap: 48px;
-  margin-bottom: 56px;
-}
+/* Footer grid defined in section 37 */
+/* .footer-grid { ... } */
 .footer-logo {
   height: 40px;
   margin-bottom: 18px;
@@ -1264,7 +1260,7 @@ textarea.form-field { resize: vertical; min-height: 136px; }
   .leadership-grid { grid-template-columns: 1fr; gap: 40px; }
   .news-grid { grid-template-columns: repeat(2, 1fr); }
   .partners-grid { grid-template-columns: repeat(3, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  /* footer-grid responsive moved to section 37 */
   .about-grid { grid-template-columns: 1fr; }
   .service-detail-grid { grid-template-columns: 1fr; gap: 40px; }
   .service-detail-grid.flip { direction: ltr; }
@@ -1279,7 +1275,7 @@ textarea.form-field { resize: vertical; min-height: 136px; }
   .news-grid { grid-template-columns: 1fr; }
   .news-room-grid { grid-template-columns: 1fr; }
   .partners-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  /* footer-grid responsive moved to section 37 */
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .footer-bottom-links { justify-content: center; }
   .hero-actions { flex-direction: column; align-items: flex-start; }
@@ -1295,26 +1291,9 @@ textarea.form-field { resize: vertical; min-height: 136px; }
 }
 
 /* ── 26. LOGO ANIMATION ─────────────────────────────────── */
-.nav-logo {
-  animation: logoSlideIn 0.7s var(--ease-out) 1.4s both;
-}
 @keyframes logoSlideIn {
   from { opacity: 0; transform: translateX(-10px); }
   to   { opacity: 1; transform: translateX(0); }
-}
-.nav-logo img {
-  transition: transform var(--t-sm), filter var(--t-md);
-  /* No forced colour inversion — show original logo naturally */
-}
-#nav:not(.scrolled) .nav-logo img {
-  /* Subtle drop-shadow for visibility on dark hero */
-  filter: drop-shadow(0 1px 8px rgba(0,0,0,0.45));
-}
-#nav.scrolled .nav-logo img {
-  filter: none;
-}
-.nav-logo:hover img {
-  transform: scale(1.05);
 }
 
 /* ── 27. VIDEO SECTION ──────────────────────────────────── */
@@ -1430,22 +1409,170 @@ textarea.form-field { resize: vertical; min-height: 136px; }
   }
 }
 
-/* ── 32. FOOTER RESPONSIVE (5-col → 3-col → 2-col → 1-col) ── */
-@media (max-width: 1200px) {
-  .footer-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-  }
-}
+/* Footer responsive handled in section 37 */
 
 /* ── 33. FORM AUTOCOMPLETE & FOCUS IMPROVEMENTS ────────────── */
-.form-field:focus {
-  outline: 2px solid var(--gold);
-  outline-offset: 0;
-  border-color: var(--gold);
-}
 .form-field:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px var(--white) inset;
   -webkit-text-fill-color: var(--text-primary);
+}
+.form-field:focus-visible {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(0,128,254,0.15);
+  outline: none;
+}
+
+
+/* ── 34. TOUCH & INTERACTION IMPROVEMENTS ──────────────────── */
+/* Remove 300ms tap delay on mobile */
+a, button, .btn, .filter-btn, .nav-link, .mobile-link, .footer-link,
+.news-card-read, .service-card-link {
+  touch-action: manipulation;
+}
+
+/* Minimum 44×44 touch target on burger */
+.nav-burger {
+  min-width: 44px;
+  min-height: 44px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Focus-visible on nav links (keyboard users) */
+.nav-link:focus-visible,
+.mobile-link:focus-visible,
+.footer-link:focus-visible,
+.btn:focus-visible,
+.filter-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── 35. HERO ART — HIDE ON SMALL MOBILE ─────────────────────── */
+@media (max-width: 680px) {
+  .hero-art { display: none; }
+  .hero-body { padding-bottom: 56px; }
+}
+
+/* ── 36. STATS INLINE OVERRIDES → CSS CLASSES ────────────────── */
+.stat-num--partnerships {
+  font-family: var(--font-stat);
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  padding-top: 8px;
+}
+.stat-num--global {
+  font-family: var(--font-stat);
+  font-size: 2rem;
+  letter-spacing: 0;
+}
+
+/* ── 37. FOOTER GRID — 5 COLUMNS (all pages) ─────────────────── */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr 1.3fr;
+  gap: 40px;
+  margin-bottom: 56px;
+}
+@media (max-width: 1200px) {
+  .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+}
+@media (max-width: 1100px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* ── 38. LEADERSHIP PHOTO PLACEHOLDER UPGRADE ─────────────────── */
+.leadership-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px;
+  background: linear-gradient(160deg, var(--ink-soft) 0%, var(--ink) 100%);
+  color: var(--text-on-dark-2);
+}
+.leadership-photo-placeholder svg {
+  width: 56px; height: 56px;
+  color: var(--gold);
+  opacity: 0.35;
+}
+.leadership-photo-label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-on-dark);
+  letter-spacing: 0.01em;
+  margin-top: 4px;
+}
+.leadership-photo-sub {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-2);
+}
+
+/* ── 39. FORM STATUS MESSAGE ───────────────────────────────────── */
+.form-status-msg {
+  min-height: 0;
+  overflow: hidden;
+  transition: min-height var(--t-md), padding var(--t-md);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: var(--radius);
+  margin-bottom: 0;
+}
+.form-status-msg.success {
+  min-height: 48px;
+  padding: 13px 16px;
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+  margin-bottom: 16px;
+}
+.form-status-msg.error {
+  min-height: 48px;
+  padding: 13px 16px;
+  background: #fce4ec;
+  color: #880e4f;
+  border: 1px solid #f48fb1;
+  margin-bottom: 16px;
+}
+
+/* ── 40. MAP BLOCK UPGRADE ──────────────────────────────────────── */
+.map-block {
+  margin-top: 40px;
+  background: var(--linen);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  height: 260px;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+}
+
+/* ── 41. PREFERS-REDUCED-MOTION ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .ticker-inner { animation: none; }
+  .hero-art svg { animation: none; }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  #preloader { display: none !important; }
 }
 
