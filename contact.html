@@ -16,6 +16,29 @@
   <meta name="twitter:image" content="https://kontemporary.net.ng/images/picture1.png">
   <link rel="canonical" href="https://kontemporary.net.ng/contact">
   <link rel="icon" type="image/png" href="https://kontemporary.net.ng/images/picture1.png">
+  <!-- Staging: prevent search engine indexing of this preview URL -->
+  <meta name="robots" content="noindex, nofollow">
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact — Kontemporary Konsulting Ltd",
+    "url": "https://kontemporary.net.ng/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Kontemporary Konsulting Ltd",
+      "email": "info@kontemporary.net.ng",
+      "telephone": "+234-800-000-0000",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Abuja",
+        "addressRegion": "FCT",
+        "addressCountry": "NG"
+      }
+    }
+  }
+  </script>
   <link rel="dns-prefetch" href="https://kontemporary.net.ng">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,7 +238,7 @@
       </button>
     </div>
   </header>
-  <div id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <div id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-hidden="true" aria-modal="true">
     <a href="index.html"     class="mobile-link">Home</a>
     <div class="mobile-divider"></div>
     <a href="about.html"     class="mobile-link">About</a>
@@ -225,12 +248,6 @@
     <a href="contact.html"   class="mobile-link">Contact Us</a>
   </div>
   <main id="main-content" role="main">
-    <a href="about.html"     class="mobile-link">About</a>
-    <a href="services.html"  class="mobile-link">Services</a>
-    <a href="news-room.html" class="mobile-link">News Room</a>
-    <div class="mobile-divider"></div>
-    <a href="contact.html"   class="mobile-link">Contact Us</a>
-  </div>
 
   <!-- ══ PAGE HERO ══════════════════════════════════════════ -->
   <section class="page-hero" style="padding-bottom:60px;">
@@ -273,6 +290,13 @@
             </div>
 
             <div class="contact-block">
+              <p class="contact-block-label">Phone</p>
+              <p class="contact-block-val">
+                <a href="tel:+2348033000000">+234 803 300 0000</a>
+              </p>
+            </div>
+
+            <div class="contact-block">
               <p class="contact-block-label">Email</p>
               <p class="contact-block-val">
                 <a href="mailto:info@kontemporary.net.ng">info@kontemporary.net.ng</a>
@@ -298,16 +322,22 @@
 
           </div>
 
-          <!-- Map embed -->
-          <div class="map-block" style="margin-top:32px; padding:0; display:block; height:240px;">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126094.47978427905!2d7.319651!3d9.0634835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e745f4cd62fd9%3A0x53bd17b4a20ea12b!2sAbuja%2C%20Federal%20Capital%20Territory%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1716000000000"
-              width="100%" height="100%" style="border:0; display:block;"
-              allowfullscreen="" loading="lazy"
-              title="Kontemporary Konsulting Ltd — Abuja, Nigeria"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
+          <!-- Static map link replaces heavy Google Maps iframe (~800KB saved) -->
+          <a href="https://maps.google.com/?q=Abuja,Federal+Capital+Territory,Nigeria"
+             target="_blank" rel="noopener noreferrer"
+             class="map-static-link" aria-label="View Abuja, Nigeria on Google Maps (opens in new tab)"
+             style="display:block; margin-top:32px; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; text-decoration:none; color:inherit;">
+            <div style="background:var(--gold-pale); height:200px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; transition:background 0.2s;">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:36px;height:36px;color:var(--gold);" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+              </svg>
+              <div style="text-align:center;">
+                <p style="font-weight:500; font-size:0.9rem; color:var(--text-primary); margin:0;">Abuja, Federal Capital Territory</p>
+                <p style="font-size:0.78rem; color:var(--text-muted); margin:4px 0 0;">View on Google Maps →</p>
+              </div>
+            </div>
+          </a>
         </div>
 
         <!-- Right: form panel -->
@@ -316,7 +346,7 @@
             <h3 class="form-panel-title">Send us a message</h3>
             <p class="form-panel-sub">Fill in the form below and a member of our team will be in touch shortly.</p>
 
-            <form id="contact-form" novalidate>
+            <form id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
 
               <div class="form-row">
                 <div class="form-group">
@@ -469,8 +499,8 @@
       <div class="footer-bottom">
         <span>© 2026 Kontemporary Konsulting Ltd. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#" class="footer-bottom-link">Privacy Policy</a>
-          <a href="#" class="footer-bottom-link">Terms of Use</a>
+          <a href="https://kontemporary.net.ng/index.php/privacy-policy" target="_blank" rel="noopener" class="footer-bottom-link">Privacy Policy</a>
+          <a href="https://kontemporary.net.ng/index.php/contact-us"     target="_blank" rel="noopener" class="footer-bottom-link">Feedback</a>
         </div>
       </div>
     </div>

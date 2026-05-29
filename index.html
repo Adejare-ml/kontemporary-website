@@ -16,6 +16,35 @@
   <meta name="twitter:image" content="https://kontemporary.net.ng/images/picture1.png">
   <link rel="canonical" href="https://kontemporary.net.ng/">
   <link rel="icon" type="image/png" href="https://kontemporary.net.ng/images/picture1.png">
+  <!-- Staging: prevent search engine indexing of this preview URL -->
+  <meta name="robots" content="noindex, nofollow">
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kontemporary Konsulting Ltd",
+    "url": "https://kontemporary.net.ng",
+    "logo": "https://kontemporary.net.ng/images/picture1.png",
+    "description": "Nigeria's premier ICT consultancy with 30+ years serving Federal Government, World Bank and EU-funded projects.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Abuja",
+      "addressRegion": "FCT",
+      "addressCountry": "NG"
+    },
+    "email": "info@kontemporary.net.ng",
+    "foundingDate": "1990",
+    "knowsAbout": ["ICT Consultancy", "Digital Policy", "Internet Governance", "Cybersecurity", "Government Technology"],
+    "areaServed": ["Nigeria", "Africa", "International"],
+    "founder": {
+      "@type": "Person",
+      "name": "Dr. Jimson Olufuye",
+      "jobTitle": "Principal & Founder",
+      "knowsAbout": ["ICT Governance", "Digital Policy", "Internet Governance", "Cybersecurity"]
+    }
+  }
+  </script>
   <link rel="dns-prefetch" href="https://kontemporary.net.ng">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,11 +86,9 @@
     </div>
   </header>
 
-  <div id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <div id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-hidden="true" aria-modal="true">
     <a href="index.html"     class="mobile-link">Home</a>
     <div class="mobile-divider"></div>
-
-  <main id="main-content" role="main">
     <a href="about.html"     class="mobile-link">About</a>
     <a href="services.html"  class="mobile-link">Services</a>
     <a href="news-room.html" class="mobile-link">News Room</a>
@@ -69,13 +96,15 @@
     <a href="contact.html"   class="mobile-link">Contact Us</a>
   </div>
 
+  <main id="main-content" role="main">
+
   <!-- ══ HERO ═══════════════════════════════════════════════ -->
   <section class="hero" aria-label="Hero">
     <div class="wrap hero-body">
       <div class="hero-text">
         <span class="eyebrow reveal">ICT Consulting &nbsp;·&nbsp; Abuja, Nigeria &nbsp;·&nbsp; Est. 1990s</span>
         <h1 class="hero-headline reveal reveal-d1">
-          30 Years<br>
+          30+ Years<br>
           Shaping <em>Nigeria's</em><br>
           Digital Future.
         </h1>
@@ -272,7 +301,7 @@
             <div class="leadership-photo-placeholder">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
               <span class="leadership-photo-label">Dr. Jimson Olufuye</span>
-              <span class="leadership-photo-sub">Portrait coming soon</span>
+              <span class="leadership-photo-sub">Principal &amp; Founder</span>
             </div>
           </div>
           <div class="leadership-frame" aria-hidden="true"></div>
@@ -351,21 +380,28 @@
       <div class="section-head center light reveal" style="margin-bottom:48px;">
         <span class="eyebrow">Watch</span>
         <h2 class="display-lg" id="video-title" style="color:var(--text-on-dark); margin-top:16px;">
-          Hear it from us directly.
+          How we have advised<br><em>governments and the UN.</em>
         </h2>
         <p style="color:var(--text-on-dark-2); margin-top:12px; line-height:1.7;">
-          A brief introduction to who Kontemporary Konsulting is and what we stand for.
+          Hear directly from Dr. Jimson Olufuye on Kontemporary's 30+ year mission to shape Nigeria's digital future.
         </p>
       </div>
       <div class="video-outer reveal">
         <div class="video-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/M_sVLadxayw?si=k-LruhPKRtq6I7MJ"
-            title="Kontemporary Konsulting — Introduction"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy">
-          </iframe>
+          <!-- Lite YouTube Facade: loads thumbnail only; iframe loads on play click -->
+          <div class="lite-yt" data-videoid="M_sVLadxayw" role="button" tabindex="0"
+               aria-label="Play video: Kontemporary Konsulting — Introduction">
+            <img class="lite-yt-thumb"
+                 src="https://i.ytimg.com/vi/M_sVLadxayw/hqdefault.jpg"
+                 alt="Kontemporary Konsulting introduction video thumbnail"
+                 loading="lazy" width="640" height="360">
+            <button class="lite-yt-play" aria-label="Play video" type="button">
+              <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path class="lite-yt-play-bg" d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"/>
+                <path class="lite-yt-play-arrow" d="M 45,24 27,14 27,34"/>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -379,16 +415,16 @@
         <h2 class="display-md" id="partners-title" style="margin-top:16px;">Trusted by institutions<br>that shape Africa</h2>
       </div>
       <div class="partners-grid reveal">
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l1.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l2.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l3.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l4.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l5.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l6.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l7.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l8.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l9.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
-        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l10.png" alt="" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">Partner</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l1.png" alt="Internet Society (ISOC)" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">ISOC</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l2.png" alt="ICANN — Internet Corporation for Assigned Names and Numbers" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">ICANN</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l3.png" alt="Internet Governance Forum (IGF)" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">IGF</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l4.png" alt="African Union (AU)" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">AU</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l5.png" alt="ECOWAS — Economic Community of West African States" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">ECOWAS</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l6.png" alt="NCC — Nigerian Communications Commission" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">NCC</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l7.png" alt="World Bank Group" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">World Bank</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l8.png" alt="European Union (EU)" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">EU</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l9.png" alt="United Nations (UN)" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">UN</span></div>
+        <div class="partner-item"><img src="https://kontemporary.net.ng/images/l10.png" alt="NITDA — National Information Technology Development Agency" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'"><span class="partner-name" style="display:none;">NITDA</span></div>
       </div>
     </div>
   </section>

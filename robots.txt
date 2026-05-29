@@ -1,0 +1,10 @@
+# robots.txt — Kontemporary Konsulting staging preview
+# This is a staging site at adejare-ml.github.io
+# The canonical production site is at kontemporary.net.ng
+# Prevent indexing of this preview URL to avoid duplicate content penalties.
+
+User-agent: *
+Disallow: /
+
+# Production site sitemap (for reference)
+# Sitemap: https://kontemporary.net.ng/sitemap.xml
