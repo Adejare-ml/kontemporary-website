@@ -199,6 +199,20 @@ input, textarea, select { font-family: inherit; }
 .btn-outline-light:hover { border-color: var(--gold); color: var(--gold); }
 
 /* ── 6. PRELOADER ──────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   PREMIUM K LOADER
+   Sequence (ms):  0 → corners slide in
+                  100 → rings begin pulsing
+                  180 → vertical stroke draws   (420ms)
+                  500 → upper diagonal draws    (380ms)
+                  780 → lower diagonal draws    (380ms)
+                  620 → brand label fades up
+                 1050 → glow burst fires
+                 1200 → progress bar completes
+                 1400 → preloader fades out
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Base ──────────────────────────────────────────────────── */
 #preloader {
   position: fixed;
   inset: 0;
@@ -208,27 +222,130 @@ input, textarea, select { font-family: inherit; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.65s var(--ease-out), visibility 0.65s;
+  overflow: hidden;
+  transition: opacity 0.75s var(--ease-out), visibility 0.75s,
+              transform 0.75s var(--ease-out);
 }
-#preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+#preloader.done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.04);
+}
 
-/* Subtle dot-grid texture on preloader */
+/* Dot-grid background texture */
 #preloader::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-image: radial-gradient(
+    circle, rgba(255,255,255,0.035) 1px, transparent 1px
+  );
   background-size: 38px 38px;
   pointer-events: none;
 }
 
-.loader-k {
-  width: 64px;
-  height: 82px;
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 0 18px rgba(0,128,254,0.55));
+/* Radial vignette so corners fade to solid ink */
+#preloader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 70% at 50% 50%,
+    transparent 30%,
+    rgba(7,45,77,0.55) 100%
+  );
+  pointer-events: none;
 }
+
+/* ── Corner brackets ───────────────────────────────────────── */
+.pl-corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: rgba(0,128,254,0.30);
+  border-style: solid;
+  opacity: 0;
+  animation: plCornerIn 0.35s cubic-bezier(0.0, 0.0, 0.2, 1) both;
+}
+.pl-corner--tl {
+  top: 28px; left: 28px;
+  border-width: 1px 0 0 1px;
+  animation-delay: 0.05s;
+}
+.pl-corner--tr {
+  top: 28px; right: 28px;
+  border-width: 1px 1px 0 0;
+  animation-delay: 0.10s;
+}
+.pl-corner--bl {
+  bottom: 28px; left: 28px;
+  border-width: 0 0 1px 1px;
+  animation-delay: 0.10s;
+}
+.pl-corner--br {
+  bottom: 28px; right: 28px;
+  border-width: 0 1px 1px 0;
+  animation-delay: 0.05s;
+}
+
+@keyframes plCornerIn {
+  from { opacity: 0; transform: scale(0.82); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── K wrap + rings ────────────────────────────────────────── */
+.pl-k-wrap {
+  position: relative;
+  width: 116px;
+  height: 116px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* Inner ring */
+.pl-ring {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,128,254,0.20);
+  animation: plRingBreath 2.8s cubic-bezier(0.4, 0, 0.6, 1) 0.1s infinite;
+}
+
+/* Outer ring (delayed phase) */
+.pl-ring--outer {
+  width: 112px;
+  height: 112px;
+  border-color: rgba(0,128,254,0.10);
+  animation: plRingBreath 2.8s cubic-bezier(0.4, 0, 0.6, 1) 0.6s infinite;
+}
+
+@keyframes plRingBreath {
+  0%, 100% { transform: scale(1);    opacity: 0.55; }
+  50%       { transform: scale(1.06); opacity: 1;    }
+}
+
+/* ── SVG K mark ────────────────────────────────────────────── */
+.loader-k {
+  width: 58px;
+  height: 76px;
+  position: relative;
+  z-index: 2;
+  /* Glow builds as strokes complete — animated via step 4 */
+  filter: drop-shadow(0 0 12px rgba(0,128,254,0.45));
+  animation: plKGlowUp 0.45s cubic-bezier(0.0, 0.0, 0.2, 1) 1.05s both;
+}
+@keyframes plKGlowUp {
+  from { filter: drop-shadow(0 0 12px rgba(0,128,254,0.45)); }
+  50%  { filter: drop-shadow(0 0 36px rgba(0,128,254,1.0))
+                 drop-shadow(0 0 64px rgba(0,128,254,0.55)); }
+  to   { filter: drop-shadow(0 0 22px rgba(0,128,254,0.65)); }
+}
+
+/* ── Stroke draw animations ────────────────────────────────── */
 .k-line {
   fill: none;
   stroke: var(--gold);
@@ -236,32 +353,115 @@ input, textarea, select { font-family: inherit; }
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+/* Vertical spine  (12,6)→(12,62): length ≈ 56 */
 .k-line-1 {
-  stroke-dasharray: 76;
-  stroke-dashoffset: 76;
-  animation: draw 0.45s var(--ease-out) 0.15s forwards;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: draw 0.42s cubic-bezier(0.0, 0.0, 0.2, 1) 0.18s forwards;
 }
+/* Upper arm  (12,34)→(46,6): length ≈ 44 */
 .k-line-2 {
-  stroke-dasharray: 62;
-  stroke-dashoffset: 62;
-  animation: draw 0.4s var(--ease-out) 0.48s forwards;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: draw 0.36s cubic-bezier(0.0, 0.0, 0.2, 1) 0.50s forwards;
 }
+/* Lower arm  (12,34)→(46,62): length ≈ 44 */
 .k-line-3 {
-  stroke-dasharray: 62;
-  stroke-dashoffset: 62;
-  animation: draw 0.4s var(--ease-out) 0.76s forwards;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: draw 0.36s cubic-bezier(0.0, 0.0, 0.2, 1) 0.78s forwards;
 }
-.loader-tag {
-  margin-top: 28px;
-  font-size: 0.65rem;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: rgba(240,242,245,0.45);
+
+/* ── Glow burst (fires once K is fully drawn) ──────────────── */
+.pl-glow-burst {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(0,128,254,0.28) 0%,
+    rgba(0,128,254,0.10) 40%,
+    transparent 70%
+  );
   opacity: 0;
+  transform: scale(0.5);
+  animation: plGlowBurst 0.7s cubic-bezier(0.0, 0.0, 0.2, 1) 1.05s both;
+  pointer-events: none;
+}
+@keyframes plGlowBurst {
+  0%   { opacity: 0;   transform: scale(0.5); }
+  35%  { opacity: 1;   transform: scale(1.2); }
+  100% { opacity: 0;   transform: scale(1.9); }
+}
+
+/* ── Brand label ───────────────────────────────────────────── */
+.pl-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 24px;
   position: relative;
   z-index: 1;
-  animation: fadeUp 0.4s var(--ease-out) 0.55s forwards;
 }
+.pl-brand-a,
+.pl-brand-b {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(5px);
+}
+.pl-brand-a {
+  color: rgba(240,242,245,0.85);
+  animation: fadeUp 0.4s cubic-bezier(0.0, 0.0, 0.2, 1) 0.62s both;
+}
+.pl-brand-sep {
+  color: var(--gold);
+  font-size: 0.75rem;
+  opacity: 0;
+  animation: plFadeIn 0.3s ease 0.78s both;
+}
+.pl-brand-b {
+  color: rgba(240,242,245,0.40);
+  animation: fadeUp 0.4s cubic-bezier(0.0, 0.0, 0.2, 1) 0.72s both;
+}
+
+@keyframes plFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Progress bar ──────────────────────────────────────────── */
+.pl-bar-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(0,128,254,0.08);
+  overflow: hidden;
+  z-index: 2;
+}
+.pl-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    rgba(0,128,254,0.5) 0%,
+    var(--gold)         60%,
+    rgba(255,255,255,0.6) 100%
+  );
+  box-shadow: 0 0 10px rgba(0,128,254,0.6);
+  animation: plProgress 1.18s cubic-bezier(0.4, 0, 0.15, 1) 0.08s both;
+}
+@keyframes plProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* Legacy class kept for any stray references */
+.loader-tag { display: none; }
 
 /* ── 7. NAVIGATION ─────────────────────────────────────── */
 #nav {
@@ -1237,7 +1437,6 @@ textarea.form-field { resize: vertical; min-height: 136px; }
 /* ── 24. KEYFRAMES ──────────────────────────────────────── */
 @keyframes draw { to { stroke-dashoffset: 0; } }
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-.loader-tag { transform: translateY(6px); }
 
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(0deg); }

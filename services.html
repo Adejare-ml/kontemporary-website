@@ -40,13 +40,34 @@
 </head>
 <body>
   <!-- ══ PRELOADER ══════════════════════════════════════════ -->
-  <div id="preloader">
-    <svg class="loader-k" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="k-line k-line-1" d="M12 6 L12 62"/>
-      <path class="k-line k-line-2" d="M12 34 L46 6"/>
-      <path class="k-line k-line-3" d="M12 34 L46 62"/>
-    </svg>
-    <span class="loader-tag">Kontemporary Konsulting</span>
+  <div id="preloader" role="status" aria-label="Loading Kontemporary Konsulting">
+
+    <span class="pl-corner pl-corner--tl" aria-hidden="true"></span>
+    <span class="pl-corner pl-corner--tr" aria-hidden="true"></span>
+    <span class="pl-corner pl-corner--bl" aria-hidden="true"></span>
+    <span class="pl-corner pl-corner--br" aria-hidden="true"></span>
+
+    <div class="pl-k-wrap" aria-hidden="true">
+      <div class="pl-ring"></div>
+      <div class="pl-ring pl-ring--outer"></div>
+      <svg class="loader-k" viewBox="0 0 52 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="k-line k-line-1" d="M12 6 L12 62"/>
+        <path class="k-line k-line-2" d="M12 34 L46 6"/>
+        <path class="k-line k-line-3" d="M12 34 L46 62"/>
+      </svg>
+      <div class="pl-glow-burst" aria-hidden="true"></div>
+    </div>
+
+    <div class="pl-brand" aria-hidden="true">
+      <span class="pl-brand-a">KONTEMPORARY</span>
+      <span class="pl-brand-sep">&middot;</span>
+      <span class="pl-brand-b">KONSULTING</span>
+    </div>
+
+    <div class="pl-bar-track" aria-hidden="true">
+      <div class="pl-bar-fill"></div>
+    </div>
+
   </div>
   <a class="skip-nav" href="#main-content">Skip to main content</a>
 
