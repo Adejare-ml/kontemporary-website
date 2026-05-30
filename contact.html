@@ -367,7 +367,19 @@
             <h3 class="form-panel-title">Send us a message</h3>
             <p class="form-panel-sub">Fill in the form below and a member of our team will be in touch shortly.</p>
 
-            <form id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+            <form id="contact-form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate>
+
+              <!-- Web3Forms config (free — get key at web3forms.com) -->
+              <!-- TODO: replace with your real access key from web3forms.com/create -->
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+              <input type="hidden" name="subject" value="New Website Enquiry — Kontemporary Konsulting">
+              <input type="hidden" name="from_name" value="Kontemporary Website">
+              <input type="hidden" name="redirect" value="false">
+              <!-- Honeypot spam trap -->
+              <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" aria-hidden="true">
 
               <div class="form-row">
                 <div class="form-group">

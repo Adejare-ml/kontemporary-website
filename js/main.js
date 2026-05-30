@@ -185,48 +185,38 @@
     });
   }
 
-  /* ── CONTACT FORM (Formspree) ───────────────────────────── */
+  /* ── CONTACT FORM (Web3Forms) ────────────────────────────────
+   * SETUP — 2 minutes, no account needed:
+   * 1. Visit https://web3forms.com/create
+   * 2. Enter info@kontemporary.net.ng → "Create Access Key"
+   * 3. Confirm via email → copy the key
+   * 4. In contact.html replace YOUR_WEB3FORMS_KEY in the hidden input
+   * Free tier: unlimited submissions, built-in spam filter.
+   * Until key is set, form falls back to a pre-filled mailto.
+   * ─────────────────────────────────────────────────────────── */
   function initContactForm() {
     const form   = document.getElementById('contact-form');
     const status = document.getElementById('form-status');
     if (!form) return;
 
-    /*
-     * SETUP INSTRUCTIONS:
-     * 1. Go to https://formspree.io and create a free account
-     * 2. Create a new form pointing to info@kontemporary.net.ng
-     * 3. Copy your form ID (e.g. "xpwzgkqr") from the Formspree dashboard
-     * 4. In contact.html, update the form action:
-     *    action="https://formspree.io/f/YOUR_FORM_ID"
-     * 5. Replace 'YOUR_FORMSPREE_ID' in the line below with your real ID
-     */
-    const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // ← replace this
-
     function setStatus(type, msg) {
       if (!status) return;
-      status.className = 'form-status-msg ' + type;
+      status.className   = 'form-status-msg ' + type;
       status.textContent = msg;
     }
-
     function clearStatus() {
       if (!status) return;
-      status.className = 'form-status-msg';
+      status.className   = 'form-status-msg';
       status.textContent = '';
     }
-
-    // Basic client-side validation
-    function validateForm(data) {
-      const firstName = data.get('first_name')?.trim();
-      const email     = data.get('email')?.trim();
-      const message   = data.get('message')?.trim();
-
-      if (!firstName) return 'Please enter your first name.';
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    function validate(data) {
+      if (!data.get('first_name')?.trim())
+        return 'Please enter your first name.';
+      const email = data.get('email')?.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
         return 'Please enter a valid email address.';
-      }
-      if (!message || message.length < 10) {
+      if (!data.get('message')?.trim() || data.get('message').trim().length < 10)
         return 'Please enter a message (at least 10 characters).';
-      }
       return null;
     }
 
@@ -234,90 +224,77 @@
       e.preventDefault();
       clearStatus();
 
-      const formData = new FormData(form);
-      const validationError = validateForm(formData);
+      const data = new FormData(form);
+      const err  = validate(data);
+      if (err) { setStatus('error', err); return; }
 
-      if (validationError) {
-        setStatus('error', validationError);
-        return;
-      }
-
-      const btn      = form.querySelector('[type="submit"]') || form.querySelector('.submit-btn');
+      const btn      = form.querySelector('[type="submit"]');
       const original = btn.innerHTML;
-
-      btn.innerHTML = 'Sending…';
-      btn.disabled  = true;
+      btn.innerHTML  = 'Sending\u2026';
+      btn.disabled   = true;
       btn.setAttribute('aria-busy', 'true');
 
-      // Check if Formspree has been configured
-      const formAction = form.getAttribute('action') || '';
-      const isConfigured = formAction.includes('formspree.io/f/') &&
-                           !formAction.includes('YOUR_FORMSPREE_ID');
+      const keyInput    = form.querySelector('[name="access_key"]');
+      const isConfigured = keyInput &&
+                           keyInput.value.trim() &&
+                           keyInput.value !== 'YOUR_WEB3FORMS_KEY';
 
+      /* ── Fallback: mailto until key is configured ── */
       if (!isConfigured) {
-        // Fallback: open mail client pre-filled (works immediately without backend)
-        const name    = formData.get('first_name') + ' ' + (formData.get('last_name') || '');
-        const email   = formData.get('email') || '';
+        const name    = (data.get('first_name') || '') + ' ' + (data.get('last_name') || '');
         const subject = encodeURIComponent('Website Enquiry from ' + name.trim());
         const body    = encodeURIComponent(
-          'Name: ' + name.trim() + '\n' +
-          'Email: ' + email + '\n' +
-          'Organisation: ' + (formData.get('organisation') || 'N/A') + '\n' +
-          'Phone: ' + (formData.get('phone') || 'N/A') + '\n' +
-          'Service: ' + (formData.get('service') || 'General') + '\n\n' +
-          'Message:\n' + (formData.get('message') || '')
+          'Name: '         + name.trim()                          + '\n' +
+          'Email: '        + (data.get('email')        || '')     + '\n' +
+          'Organisation: ' + (data.get('organisation') || 'N/A') + '\n' +
+          'Phone: '        + (data.get('phone')        || 'N/A') + '\n' +
+          'Service: '      + (data.get('service')      || 'General Enquiry') + '\n\n' +
+          'Message:\n'    + (data.get('message')      || '')
         );
         window.location.href =
           'mailto:info@kontemporary.net.ng?subject=' + subject + '&body=' + body;
-
         btn.innerHTML = original;
         btn.disabled  = false;
         btn.removeAttribute('aria-busy');
-        setStatus('success', '✓ Your mail client has been opened. Please send the pre-filled email to complete your enquiry.');
+        setStatus('success',
+          '\u2713 Your mail client has opened with a pre-filled message. ' +
+          'Please send it to complete your enquiry.');
         return;
       }
 
-      // Real Formspree submission
+      /* ── Real Web3Forms submission ── */
       try {
-        const response = await fetch(formAction, {
-          method:  'POST',
-          body:    formData,
-          headers: { 'Accept': 'application/json' }
+        const res  = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST', body: data, headers: { Accept: 'application/json' }
         });
-
-        if (response.ok) {
-          btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px;flex-shrink:0;"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg> Message Sent`;
-          btn.style.background  = '#166534';
-          btn.style.borderColor = '#166534';
-          setStatus('success', '✓ Your message has been received. We\'ll respond within one business day.');
+        const json = await res.json();
+        if (json.success) {
+          btn.innerHTML     = '\u2713 Message Sent';
+          btn.style.cssText = 'background:#166534;border-color:#166534;';
+          setStatus('success',
+            '\u2713 Your message has been received. ' +
+            'We will respond within one business day.');
           form.reset();
-
           setTimeout(() => {
-            btn.innerHTML = original;
-            btn.style.background  = '';
-            btn.style.borderColor = '';
-            btn.disabled  = false;
+            btn.innerHTML     = original;
+            btn.style.cssText = '';
+            btn.disabled      = false;
             btn.removeAttribute('aria-busy');
             clearStatus();
           }, 6000);
         } else {
-          const data = await response.json();
-          const msg  = data.errors
-            ? data.errors.map(err => err.message).join(', ')
-            : 'Submission failed. Please try again or email info@kontemporary.net.ng directly.';
-          setStatus('error', msg);
-          btn.innerHTML = original;
-          btn.disabled  = false;
-          btn.removeAttribute('aria-busy');
+          throw new Error(json.message || 'Submission failed');
         }
-      } catch (err) {
-        setStatus('error', 'Network error. Please email info@kontemporary.net.ng directly.');
+      } catch {
+        setStatus('error',
+          'Could not send message. Please email info@kontemporary.net.ng directly.');
         btn.innerHTML = original;
         btn.disabled  = false;
         btn.removeAttribute('aria-busy');
       }
     });
   }
+
 
   /* ── LITE YOUTUBE FACADE ────────────────────────────────── */
   function initLiteYoutube() {

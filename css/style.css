@@ -1863,3 +1863,250 @@ a, button, .btn, .filter-btn, .nav-link, .mobile-link, .footer-link,
 .map-static-link:hover > div {
   background: var(--gold-light) !important;
 }
+
+/* ════════════════════════════════════════════════════════════
+   TESTIMONIALS SECTION
+   ════════════════════════════════════════════════════════════ */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+@media (max-width: 900px) {
+  .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+.testimonial-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 36px 36px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease),
+              transform 0.25s var(--ease);
+}
+.testimonial-card:hover {
+  box-shadow: 0 12px 40px rgba(7,45,77,0.10);
+  border-color: var(--border-mid);
+  transform: translateY(-3px);
+}
+
+/* Big opening quotation mark */
+.testimonial-mark {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 0.7;
+  color: var(--gold);
+  opacity: 0.5;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+.testimonial-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  line-height: 1.75;
+  color: var(--text-primary);
+  flex: 1;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.testimonial-source {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.testimonial-rule {
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+.testimonial-role {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+.testimonial-org {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   MILESTONES TIMELINE  (about page)
+   ════════════════════════════════════════════════════════════ */
+.milestones-track {
+  margin-top: 64px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+/* Horizontal connector line behind nodes */
+.milestones-track::before {
+  content: '';
+  position: absolute;
+  top: calc(40px + 10px); /* aligns with node centre */
+  left: calc(12.5% + 10px);
+  right: calc(12.5% + 10px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--border) 0%,
+    var(--gold) 50%,
+    var(--border) 100%
+  );
+  z-index: 0;
+}
+
+.milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.milestone-year {
+  font-family: var(--font-stat);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.milestone-node-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.milestone-node {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--white);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.milestone-node::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--border-mid);
+  transition: background 0.3s var(--ease);
+}
+.milestone-node--active,
+.milestone:hover .milestone-node {
+  transform: scale(1.25);
+  box-shadow: 0 0 0 5px rgba(0,128,254,0.15);
+}
+.milestone-node--active::after,
+.milestone:hover .milestone-node::after {
+  background: var(--gold);
+}
+
+.milestone-content {
+  margin-top: 24px;
+}
+.milestone-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 10px;
+  line-height: 1.35;
+}
+.milestone-desc {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Mobile: vertical stack */
+@media (max-width: 860px) {
+  .milestones-track {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .milestones-track::before {
+    top: calc(24px + 10px);
+    left: 28px;
+    right: auto;
+    width: 1px;
+    height: calc(100% - 48px);
+    background: linear-gradient(180deg, var(--border) 0%, var(--gold) 50%, var(--border) 100%);
+  }
+  .milestone {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0 0 40px 0;
+  }
+  .milestone-year {
+    writing-mode: horizontal-tb;
+    min-width: 48px;
+    height: auto;
+    padding-top: 2px;
+  }
+  .milestone-node-wrap {
+    flex-direction: row;
+    padding-top: 2px;
+  }
+  .milestone-content {
+    margin-top: 0;
+    flex: 1;
+  }
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   CONTACT PAGE — polish additions
+   ════════════════════════════════════════════════════════════ */
+
+/* Form status messages */
+.form-status-msg {
+  font-size: 0.85rem;
+  padding: 12px 16px;
+  border-radius: 6px;
+  line-height: 1.5;
+  display: none;
+}
+.form-status-msg:not(:empty) { display: block; }
+.form-status-msg.success {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+.form-status-msg.error {
+  background: #fff1f2;
+  color: #9f1239;
+  border: 1px solid #fecdd3;
+}
