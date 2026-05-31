@@ -372,6 +372,30 @@
     });
   }
 
+  /* ── COOKIE CONSENT ────────────────────────────────────────── */
+  function initCookieBanner() {
+    const banner  = document.getElementById('cookie-banner');
+    const accept  = document.getElementById('cookie-accept');
+    const dismiss = document.getElementById('cookie-dismiss');
+    if (!banner) return;
+
+    const KEY = 'kk_cookie_consent';
+    try { if (localStorage.getItem(KEY)) return; } catch (_) {}
+
+    // Show after preloader exits
+    setTimeout(() => banner.classList.add('visible'), 1900);
+
+    function close(accepted) {
+      banner.classList.remove('visible');
+      banner.addEventListener('transitionend',
+        () => banner.classList.add('hidden'), { once: true });
+      try { localStorage.setItem(KEY, accepted ? 'accepted' : 'dismissed'); } catch (_) {}
+    }
+
+    accept?.addEventListener('click',  () => close(true));
+    dismiss?.addEventListener('click', () => close(false));
+  }
+
   /* ── INIT ALL ───────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     initPreloader();
@@ -386,6 +410,7 @@
     initTicker();
     initSmoothAnchors();
     initScrollToTop();
+    initCookieBanner();
   });
 
 })();
