@@ -636,9 +636,9 @@ input, textarea, select { font-family: inherit; }
 .hero-body {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
-  gap: 60px;
+  gap: 40px;
   padding-top: 136px;
   padding-bottom: 80px;
   position: relative;
@@ -671,15 +671,15 @@ input, textarea, select { font-family: inherit; }
 .hero-slides {
   position: relative;
   width: 100%;
-  height: clamp(420px, 56vh, 600px);
-  border-radius: 20px;
+  height: clamp(450px, 60vh, 650px);
+  border-radius: 24px;
   overflow: hidden;
   align-self: center;
   flex-shrink: 0;
   box-shadow:
-    0 32px 80px rgba(0,0,0,0.55),
-    0 0 0 1px rgba(0,128,254,0.20),
-    inset 0 0 0 1px rgba(255,255,255,0.04);
+    0 40px 100px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(0,128,254,0.3),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
 }
 
 /* Individual slides */
