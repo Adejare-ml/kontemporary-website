@@ -372,6 +372,59 @@
     });
   }
 
+  /* ── HERO SLIDESHOW ─────────────────────────────────────────── */
+  function initHeroSlides() {
+    const slides = Array.from(document.querySelectorAll('.hslide'));
+    const dots   = Array.from(document.querySelectorAll('.hslide-dot'));
+    if (!slides.length) return;
+
+    let current = 0;
+    let timer   = null;
+
+    function goTo(idx) {
+      // Out
+      slides[current].classList.remove('hslide--active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      dots[current].classList.remove('hslide-dot--active');
+      dots[current].setAttribute('aria-selected', 'false');
+      // In
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('hslide--active');
+      slides[current].setAttribute('aria-hidden', 'false');
+      dots[current].classList.add('hslide-dot--active');
+      dots[current].setAttribute('aria-selected', 'true');
+    }
+
+    function startTimer() {
+      stopTimer();
+      timer = setInterval(() => goTo(current + 1), 5000);
+    }
+    function stopTimer() { clearInterval(timer); timer = null; }
+
+    // Dot navigation
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { goTo(i); startTimer(); });
+    });
+
+    // Keyboard navigation inside the slideshow
+    const container = document.querySelector('.hero-slides');
+    container?.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { goTo(current + 1); startTimer(); }
+      if (e.key === 'ArrowLeft')  { goTo(current - 1); startTimer(); }
+    });
+
+    // Pause on hover/focus — resume on leave
+    container?.addEventListener('mouseenter', stopTimer);
+    container?.addEventListener('mouseleave', startTimer);
+    container?.addEventListener('focusin',    stopTimer);
+    container?.addEventListener('focusout',   startTimer);
+
+    // Respect prefers-reduced-motion — show slides statically
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    startTimer();
+  }
+
   /* ── COOKIE CONSENT ────────────────────────────────────────── */
   function initCookieBanner() {
     const banner  = document.getElementById('cookie-banner');
@@ -404,6 +457,7 @@
     initMobileMenu();
     initScrollReveal();
     initCounters();
+    initHeroSlides();
     initNewsFilter();
     initContactForm();
     initLiteYoutube();

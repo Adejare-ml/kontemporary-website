@@ -667,20 +667,91 @@ input, textarea, select { font-family: inherit; }
 }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
-/* Hero art (SVG) */
-.hero-art {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+/* Hero slideshow (replaces SVG art) */
+.hero-slides {
   position: relative;
-  z-index: 1;
-}
-.hero-art svg {
   width: 100%;
-  max-width: 460px;
-  height: auto;
-  animation: float 9s ease-in-out infinite;
+  aspect-ratio: 4 / 3.2;
+  max-width: 480px;
+  border-radius: 18px;
+  overflow: hidden;
+  align-self: center;
+  margin-left: auto;
+  box-shadow:
+    0 28px 64px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(0,128,254,0.18);
+  flex-shrink: 0;
 }
+
+/* Individual slides */
+.hslide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.0s cubic-bezier(0.4,0,0.2,1);
+  will-change: opacity;
+}
+.hslide--active { opacity: 1; }
+.hslide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+}
+
+/* Bottom gradient + caption */
+.hslide-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 40px 20px 48px;
+  background: linear-gradient(
+    0deg,
+    rgba(7,45,77,0.80) 0%,
+    rgba(7,45,77,0.30) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+.hslide-tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,242,245,0.80);
+  display: block;
+}
+
+/* Nav dots */
+.hslide-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 3;
+}
+.hslide-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.30);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease),
+              width 0.3s var(--ease);
+  flex-shrink: 0;
+}
+.hslide-dot--active {
+  background: var(--gold);
+  width: 22px;
+  border-radius: 4px;
+  transform: none;
+}
+.hslide-dot:hover:not(.hslide-dot--active) { background: rgba(255,255,255,0.65); }
+.hslide-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
 /* News ticker strip */
 .hero-ticker {
@@ -1462,8 +1533,7 @@ textarea.form-field { resize: vertical; min-height: 136px; }
 /* ── 25. RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 1100px) {
   .hero-body { grid-template-columns: 1fr; padding-top: 140px; }
-  .hero-art { justify-content: center; }
-  .hero-art svg { max-width: 340px; }
+  .hero-slides { max-width: 100%; aspect-ratio: 16/9; margin: 0 auto; border-radius: 14px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .stat-item:nth-child(2) { border-right: none; }
   .stat-item:nth-child(3) { border-right: 1px solid var(--gold-light); }
@@ -1666,9 +1736,9 @@ a, button, .btn, .filter-btn, .nav-link, .mobile-link, .footer-link,
   border-radius: 2px;
 }
 
-/* ── 35. HERO ART — HIDE ON SMALL MOBILE ─────────────────────── */
+/* ── 35. HERO SLIDES — HIDE ON SMALL MOBILE ───────────────────── */
 @media (max-width: 680px) {
-  .hero-art { display: none; }
+  .hero-slides { display: none; }
   .hero-body { padding-bottom: 56px; }
 }
 
@@ -1781,7 +1851,7 @@ a, button, .btn, .filter-btn, .nav-link, .mobile-link, .footer-link,
     scroll-behavior: auto !important;
   }
   .ticker-inner { animation: none; }
-  .hero-art svg { animation: none; }
+  .hslide { transition: none !important; }
   .reveal {
     opacity: 1 !important;
     transform: none !important;
