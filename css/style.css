@@ -636,7 +636,7 @@ input, textarea, select { font-family: inherit; }
 .hero-body {
   flex: 1;
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 0.7fr 1.3fr;
   align-items: center;
   gap: 40px;
   padding-top: 136px;
